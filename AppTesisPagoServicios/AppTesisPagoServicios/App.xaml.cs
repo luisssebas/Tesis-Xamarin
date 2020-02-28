@@ -3,33 +3,26 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using AppTesisPagoServicios.Services;
 using AppTesisPagoServicios.Views;
+using Prism.Unity;
+using Prism;
+using Prism.Ioc;
 
 namespace AppTesisPagoServicios
 {
-    public partial class App : Application
+    public partial class App : PrismApplication
     {
 
-        public App()
+        public App(IPlatformInitializer initializer = null): base(initializer) { }
+        protected override async void OnInitialized()
         {
             InitializeComponent();
-
-            DependencyService.Register<MockDataStore>();
-            MainPage = new MainPage();
+            await NavigationService.NavigateAsync("/PantallaInicialPage");
         }
 
-        protected override void OnStart()
+        protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
-            // Handle when your app starts
+            containerRegistry.RegisterForNavigation<PantallaInicialPage, PantallaInicialPageViewModel>();
         }
 
-        protected override void OnSleep()
-        {
-            // Handle when your app sleeps
-        }
-
-        protected override void OnResume()
-        {
-            // Handle when your app resumes
-        }
     }
 }

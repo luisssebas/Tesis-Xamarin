@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Title="Servicio"
+    xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+    prism:ViewModelLocator.AutowireViewModel="True"
+    xmlns:behaviors="clr-namespace:Xamarin.Forms.BehaviorsPack;assembly=Xamarin.Forms.BehaviorsPack"
+    x:Class="AppTesisPagoServicios.Views.ServicioAdminPage">
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <StackLayout Padding="20,10,20,20" Grid.Row="0">
+                <ListView
+                    HasUnevenRows="True"
+                    ItemsSource="{Binding Servicios}">
+                    <ListView.Behaviors>
+                        <behaviors:SelectedItemBehavior Command="{Binding ServicioSeleccionarCmd}" />
+                    </ListView.Behaviors>
+                    <ListView.Header>
+                        <Label Text="Servicios" FontSize="30"/>
+                    </ListView.Header>
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid Padding="10">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="20"/>
+                                        <RowDefinition Height="20"/>
+                                        <RowDefinition Height="20"/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="25"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="25"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Label
+                                        Grid.RowSpan="3"
+                                        Grid.Column="0"
+                                        Margin="0,5,0,0"
+                                        FontFamily="{StaticResource FontAwesomeSolid}"
+                                        FontSize="20"
+                                        VerticalOptions="CenterAndExpand"
+                                        HorizontalOptions="StartAndExpand"
+                                        Text="&#xf22d;"/>
+                                    <Label
+                                        Grid.Row="0"
+                                        Grid.Column="1"
+                                        FontSize="16"
+                                        Text="{Binding Nombre}"/>
+                                    <Label
+                                        Grid.Row="1"
+                                        Grid.Column="1"
+                                        FontSize="16"
+                                        Text="{Binding TipoServicio.Nombre}"/>
+                                    <Label
+                                        Grid.Row="2"
+                                        Grid.Column="1"
+                                        FontSize="16"
+                                        Text="{Binding EstaActivo}"/>
+                                    <Label
+                                        Grid.Row="1"
+                                        Grid.Column="2"
+                                        Margin="0,5,0,0"
+                                        FontFamily="{StaticResource FontAwesomeSolid}"
+                                        FontSize="20"
+                                        HorizontalOptions="EndAndExpand"
+                                        Text="&#xf105;"/>
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+            <Button 
+                Margin="30"
+                Grid.Row="0" 
+                VerticalOptions="EndAndExpand" 
+                HorizontalOptions="EndAndExpand"
+                CornerRadius="65"
+                HeightRequest="65"
+                WidthRequest="65"
+                FontFamily="{StaticResource FontAwesomeSolid}"
+                Text="&#xf067;"
+                FontSize="25"
+                Opacity="0.8"
+                BorderColor="Gray"
+                BorderWidth="1"
+                BackgroundColor="#EFEFEF"
+                TextColor="#233979"
+                Command="{Binding AgregarServicioCmd}"/>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

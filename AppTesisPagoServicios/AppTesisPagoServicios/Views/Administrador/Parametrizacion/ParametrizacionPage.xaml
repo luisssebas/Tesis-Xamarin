@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             Title="Parametrización"
+             x:Class="AppTesisPagoServicios.Views.ParametrizacionPage">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Padding="20">
+                <Label 
+                    Text="Comision"/>
+                <Entry 
+                    Text="{Binding Parametrizacion.Comision}" 
+                    Keyboard="Numeric"/>
+                <Label 
+                    Text="Maximo intentos para hacer login"/>
+                <Entry 
+                    Text="{Binding Parametrizacion.MaxIntentosLogin}" 
+                    Keyboard="Numeric"/>
+                <Label 
+                    Text="Correo"/>
+                <Entry 
+                    Text="{Binding Parametrizacion.Correo}"/>
+                <Label 
+                    Text="Contraseña Correo"/>
+                <Entry 
+                    Text="{Binding Parametrizacion.ContraseniaCorreo}" 
+                    IsPassword="True"/>
+                <Label 
+                    Text="Mensaje para recuperación de contraseña"/>
+                <Entry 
+                    Text="{Binding Parametrizacion.MensajeRecuperacionContrasenia}"/>
+                <Label 
+                    Text="Mensaje para pago completo"/>
+                <Entry 
+                    Text="{Binding Parametrizacion.MensajePagoServicio}"/>
+                <Label 
+                    Text="Mensaje para nueva cuenta"/>
+                <Entry 
+                    Text="{Binding Parametrizacion.MensajeNuevaCuenta}"/>
+                <Button 
+                    Text="Guardar" 
+                    Command="{Binding GuardarParametrizacionCmd}"/>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

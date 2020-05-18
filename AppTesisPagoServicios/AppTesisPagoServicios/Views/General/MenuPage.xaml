@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<MasterDetailPage 
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+    prism:ViewModelLocator.AutowireViewModel="True"
+    IsPresented="False"
+    Title="Pago Servicio"
+    MasterBehavior="Popover"
+    x:Class="AppTesisPagoServicios.Views.MenuPage">
+  <MasterDetailPage.Master>
+        <ContentPage
+            xmlns:behaviorsPack="clr-namespace:Xamarin.Forms.BehaviorsPack;assembly=Xamarin.Forms.BehaviorsPack"
+            Title="Pago Servicio">
+            <StackLayout Orientation="Vertical" >
+                <StackLayout BackgroundColor="White" Margin="0,10,0,0">
+                    <Image Source="banner" Scale="0.8"/>
+                    <ListView
+                        ItemsSource="{Binding ListaMenu, Mode=TwoWay}"
+                        SeparatorColor="#4D4D4D"
+                        SeparatorVisibility="Default"
+                        IsTabStop="False">
+                        <ListView.Behaviors>
+                            <behaviorsPack:SelectedItemBehavior ClearSelected="False" Command="{Binding NavegarCmd}" />
+                        </ListView.Behaviors>
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <Grid Margin="0,0,0,0" BackgroundColor="{Binding ColorFondo}">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="5*" />
+                                        </Grid.ColumnDefinitions>
+                                        <Label
+                                            Grid.Column="0"
+                                            Margin="10,0,0,0"
+                                            FontFamily="{StaticResource FontAwesomeSolid}"
+                                            FontSize="20"
+                                            HorizontalOptions="Center"
+                                            Text="{Binding Imagen}"
+                                            TextColor="{Binding Color}"
+                                            VerticalOptions="Center" />
+                                        <Label
+                                            Grid.Column="1"
+                                            FontAttributes="Bold"
+                                            FontFamily="PoppinsRegular"
+                                            FontSize="20"
+                                            Text="{Binding MenuTitle}"
+                                            TextColor="{Binding Color}"
+                                            VerticalOptions="Center" />
+                                    </Grid>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackLayout>
+            </StackLayout>
+        </ContentPage>
+    </MasterDetailPage.Master>
+  <!--<MasterDetailPage.Detail>
+    <NavigationPage>
+      <x:Arguments>
+        <pages:MenuPageDetail />
+      </x:Arguments>
+    </NavigationPage>
+  </MasterDetailPage.Detail>-->
+</MasterDetailPage>

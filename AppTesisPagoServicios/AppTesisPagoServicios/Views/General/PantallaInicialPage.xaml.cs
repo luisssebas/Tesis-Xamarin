@@ -15,6 +15,7 @@ namespace AppTesisPagoServicios.Views
         public PantallaInicialPage()
         {
             InitializeComponent();
+            NavigationPage.SetHasNavigationBar(this, false);
         }
     }
 }

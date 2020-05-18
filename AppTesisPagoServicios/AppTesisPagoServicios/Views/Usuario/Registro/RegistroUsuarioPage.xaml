@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Title="Registro"
+    x:Class="AppTesisPagoServicios.Views.RegistroUsuarioPage">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Padding="20">
+                <Label Text="Información Personal" FontSize="25"/>
+                <Label 
+                    Margin="0,10,0,0"
+                    Text="Identificación"/>
+                <Entry 
+                    MaxLength="10" 
+                    Text="{Binding Usuario.Identificacion}"/>
+                <Label 
+                    Text="Nombre"/>
+                <Entry Text="{Binding Usuario.Nombre}"/>
+                <Label 
+                    Text="Correo"/>
+                <Entry Text="{Binding Usuario.Correo}"/>
+                <Label 
+                    Margin="0,10,0,10"
+                    Text="Datos de Usuario" 
+                    FontSize="25"/>
+                <Label 
+                    Text="Usuario"/>
+                <Entry Text="{Binding Usuario.Usuario}"/>
+                <Label 
+                    Text="Contraseña"/>
+                <Entry IsPassword="True" Text="{Binding Usuario.Contrasenia}"/>
+                <Label 
+                    Text="Repita su contraseña"/>
+                <Entry IsPassword="True" Text="{Binding Usuario.ComprobacionContrasenia}"/>
+                <Button Text="Registrar" Command="{Binding RegistrarUsuarioCmd}"/>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

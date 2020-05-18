@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+    prism:ViewModelLocator.AutowireViewModel="True"
+    xmlns:behaviors="clr-namespace:Xamarin.Forms.BehaviorsPack;assembly=Xamarin.Forms.BehaviorsPack"
+    x:Class="AppTesisPagoServicios.Views.TipoPagoPage">
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <StackLayout Padding="20" Grid.Row="0">
+                <ContentView IsVisible="{Binding MostrarEditarTipoPago}">
+                    <StackLayout>
+                        <Label Text="Nombre"/>
+                        <Entry Placeholder="Ingrese el nombre" Text="{Binding TipoPago.Nombre}"/>
+                        <Label Text="Esta Activo"/>
+                        <CheckBox IsChecked="{Binding TipoPago.EstaActivo}"/>
+                        <Button Text="Guardar" Command="{Binding GuardarTipoPagoCmd}"/>
+                        <Button Text="Eliminar" Command="{Binding EliminarTipoPagoCmd}"/>
+                    </StackLayout>
+                </ContentView>
+                <ContentView IsVisible="{Binding MostrarListaTipoPago}">
+                    <ListView
+                        HasUnevenRows="True"
+                        ItemsSource="{Binding TiposPagos}">
+                        <ListView.Behaviors>
+                            <behaviors:SelectedItemBehavior Command="{Binding TipoPagoSeleccionarCmd}" />
+                        </ListView.Behaviors>
+                        <ListView.Header>
+                            <Label Text="Tipos de Pagos" FontSize="30"/>
+                        </ListView.Header>
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <Grid Padding="10">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="25"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="25"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Label
+                                            Grid.Column="0"
+                                            Margin="0,5,0,0"
+                                            FontFamily="{StaticResource FontAwesomeSolid}"
+                                            FontSize="20"
+                                            HorizontalOptions="StartAndExpand"
+                                            Text="&#xf22d;"/>
+                                        <Label
+                                            Grid.Column="1"
+                                            FontSize="20"
+                                            Text="{Binding Nombre}"/>
+                                        <Label
+                                            Grid.Column="2"
+                                            Margin="0,5,0,0"
+                                            FontFamily="{StaticResource FontAwesomeSolid}"
+                                            FontSize="20"
+                                            HorizontalOptions="EndAndExpand"
+                                            Text="&#xf105;"/>
+                                    </Grid>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </ContentView>
+            </StackLayout>
+            <Button 
+                Margin="30"
+                Grid.Row="0" 
+                VerticalOptions="EndAndExpand" 
+                HorizontalOptions="EndAndExpand"
+                CornerRadius="65"
+                HeightRequest="65"
+                WidthRequest="65"
+                FontFamily="{StaticResource FontAwesomeSolid}"
+                Text="{Binding IconoBotonTipoPago}"
+                FontSize="25"
+                Opacity="0.8"
+                BorderColor="Gray"
+                BorderWidth="1"
+                BackgroundColor="#EFEFEF"
+                TextColor="#233979"
+                Command="{Binding AgregarTipoPagoCmd}"/>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

@@ -34,6 +34,7 @@ namespace AppTesisPagoServicios
             containerRegistry.RegisterForNavigation<TipoServicioPage>();
             containerRegistry.RegisterForNavigation<TipoReferenciaPage>();
             containerRegistry.RegisterForNavigation<TipoPagoPage>();
+            containerRegistry.RegisterForNavigation<OTPPage, OTPPageViewModel>();
             containerRegistry.RegisterForNavigation<CatalogosTabbedPage, CatalogosPageViewModel>();
             containerRegistry.RegisterForNavigation<ServicioAdminPage, ServicioAdminPageViewModel>();
             containerRegistry.RegisterForNavigation<ServicioEditarAdminPage, ServicioEditarAdminPageViewModel>();
@@ -41,8 +42,20 @@ namespace AppTesisPagoServicios
             containerRegistry.RegisterForNavigation<SeleccionTipoServiciosPage, SeleccionTipoServiciosPageViewModel>();
             containerRegistry.RegisterForNavigation<ListaServiciosPage, ListaServiciosPageViewModel>();
             containerRegistry.RegisterForNavigation<ParametrizacionPage, ParametrizacionPageViewModel>();
-            containerRegistry.RegisterForNavigation<ReporteConsultaPage, ReporteConsultaPageViewModel>();
+            containerRegistry.RegisterForNavigation<ReporteConsultaPage, ReporteBusquedaPageViewModel>();
+            containerRegistry.RegisterForNavigation<ElegirPagoPage, ElegirPagoPageViewModel>();
             containerRegistry.RegisterForNavigation<InformacionPagoPage, InformacionPagoPageViewModel>();
+            containerRegistry.RegisterForNavigation<PagoCompletoPage, PagoCompletoPageViewModel>();
+            containerRegistry.RegisterForNavigation<RegistrarServicioPage, RegistrarServicioPageViewModel>();
+            containerRegistry.RegisterForNavigation<RegistroServiciosPage, RegistroServiciosPageViewModel>();
+            containerRegistry.RegisterForNavigation<ReporteBusquedaPage, ReporteBusquedaPageViewModel>();
+            containerRegistry.RegisterForNavigation<ReportePagoPage, ReportePagoPageViewModel>();
+            containerRegistry.RegisterForNavigation<ReporteListaPagoPage, ReporteListaPagoPageViewModel>();
+            containerRegistry.RegisterForNavigation<ReporteConsultaPage, ReporteConsultaPageViewModel>();
+            containerRegistry.RegisterForNavigation<ReporteListaConsultaPage, ReporteListaConsultaPageViewModel>();
+            containerRegistry.RegisterForNavigation<HistorialPagosPage, HistorialPagosPageViewModel>();
+            containerRegistry.RegisterForNavigation<HistorialPagoPage, HistorialPagoPageViewModel>();
+            containerRegistry.RegisterForNavigation<HistorialBusquedaPage, HistorialBusquedaPageViewModel>();
         }
 
 

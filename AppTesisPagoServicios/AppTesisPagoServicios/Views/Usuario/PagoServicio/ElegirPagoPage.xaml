@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Title="Elegir Pago"
+    xmlns:b="clr-namespace:Prism.Behaviors;assembly=Prism.Forms"
+    x:Class="AppTesisPagoServicios.Views.ElegirPagoPage">
+    <ContentPage.Content>
+        <StackLayout Padding="10">
+            <ListView
+                HasUnevenRows="True"
+                ItemsSource="{Binding Rubros}"
+                SelectionMode="None"
+                SeparatorColor="#4D4D4D">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Padding="10" Orientation="Horizontal">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="20" />
+                                        <RowDefinition Height="20" />
+                                        <RowDefinition Height="20" />
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="30" />
+                                        <ColumnDefinition Width="2*" />
+                                    </Grid.ColumnDefinitions>
+                                    <CheckBox
+                                        Grid.Row="0"
+                                        Margin="-5,0,0,0"
+                                        Color="#233979"
+                                        HorizontalOptions="StartAndExpand"
+                                        Grid.RowSpan="2"
+                                        Grid.Column="0"
+                                        IsChecked="{Binding Seleccionado}">
+                                    </CheckBox>
+                                    <StackLayout 
+                                        Orientation="Horizontal"
+                                        Grid.Row="0"
+                                        Grid.Column="1" >
+                                        <Label 
+                                            FontSize="14"
+                                            Text="Prioridad: "/>
+                                        <Label
+                                            FontSize="14"
+                                            Text="{Binding Prioridad}"/>
+                                    </StackLayout>
+                                    <StackLayout
+                                        Orientation="Horizontal"
+                                        Grid.Row="1"
+                                        Grid.Column="1">
+                                        <Label 
+                                            FontSize="14"
+                                            Text="Valor a pagar: "/>
+                                        <Label
+                                            FontSize="14"
+                                            Text="{Binding ValorAPagar, StringFormat='${0:N}'}"/>
+                                    </StackLayout>
+                                    <StackLayout
+                                        Orientation="Horizontal"
+                                        Grid.Row="2"
+                                        Grid.Column="1">
+                                        <Label 
+                                            FontSize="14"
+                                            Text="Descripción: "/>
+                                        <Label
+                                            FontSize="14"
+                                            Text="{Binding Descripcion}"/>
+                                    </StackLayout>
+                                   
+                                </Grid>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <Button
+                BackgroundColor="#233979"
+                Command="{Binding PagarCmd}"
+                FontAttributes="Bold"
+                FontFamily="PoppinsRegular"
+                FontSize="18"
+                HeightRequest="50"
+                Text="Siguiente"
+                TextColor="White" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

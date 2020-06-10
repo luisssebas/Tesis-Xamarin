@@ -120,8 +120,20 @@
   <data name="Colsulta_ListaConsultas" xml:space="preserve">
     <value>/Consulta/ListaConsultas</value>
   </data>
+  <data name="Consulta_ListaConsultasPorFecha" xml:space="preserve">
+    <value>/Consulta/ListaConsultasPorFecha</value>
+  </data>
   <data name="Consulta_RealizaConsulta" xml:space="preserve">
     <value>/Consulta/RealizarConsulta</value>
+  </data>
+  <data name="Pago_ListaPago" xml:space="preserve">
+    <value>/Pago/ListaPago</value>
+  </data>
+  <data name="Pago_ListaPagoFechas" xml:space="preserve">
+    <value>/Pago/ListaPagoFechas</value>
+  </data>
+  <data name="Pago_RealizarPago" xml:space="preserve">
+    <value>/Pago/RealizarPago</value>
   </data>
   <data name="Parametrizacion_ActualizarUsuario" xml:space="preserve">
     <value>/Parametrizacion/ActualizarParametrizacion</value>
@@ -201,6 +213,9 @@
   <data name="Usuario_EliminarUsuario" xml:space="preserve">
     <value>/Usuario/EliminarUsuario</value>
   </data>
+  <data name="Usuario_EnviarOTP" xml:space="preserve">
+    <value>/Usuario/EnviarOTP?username=</value>
+  </data>
   <data name="Usuario_GuardarUsuario" xml:space="preserve">
     <value>/Usuario/GuardarUsuario</value>
   </data>
@@ -209,5 +224,8 @@
   </data>
   <data name="Usuario_LoginUsuario" xml:space="preserve">
     <value>/Usuario/LoginUsuario</value>
+  </data>
+  <data name="Usuario_ValidarOTP" xml:space="preserve">
+    <value>/Usuario/ValidaOTP</value>
   </data>
 </root>

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace AppTesisPagoServicios.Views.Usuario.Servicios
+namespace AppTesisPagoServicios.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class RegistrarServicioPage : ContentPage

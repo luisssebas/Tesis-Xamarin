@@ -5,6 +5,7 @@
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
+    Title="Servicios registrados"
     xmlns:behaviors="clr-namespace:Xamarin.Forms.BehaviorsPack;assembly=Xamarin.Forms.BehaviorsPack"
     x:Class="AppTesisPagoServicios.Views.RegistroServiciosPage">
     <ContentPage.Content>
@@ -43,30 +44,32 @@
                                             Margin="0,5,0,0"
                                             FontFamily="{StaticResource FontAwesomeSolid}"
                                             FontSize="20"
+                                            VerticalOptions="CenterAndExpand"
                                             HorizontalOptions="StartAndExpand"
                                             Text="&#xf22d;"/>
                                         <Label
-                                            Grid.RowSpan="1"
+                                            Grid.Row="0"
                                             Grid.Column="1"
                                             FontSize="20"
-                                            Text="{Binding TipoServicio}"/>
+                                            Text="{Binding TipoServicio.Nombre}"/>
                                         <Label
-                                            Grid.RowSpan="1"
+                                            Grid.Row="1"
                                             Grid.Column="1"
                                             FontSize="20"
-                                            Text="{Binding NombreServicio}"/>
+                                            Text="{Binding Servicio.Nombre}"/>
                                         <Label
-                                            Grid.RowSpan="1"
+                                            Grid.Row="2"
                                             Grid.Column="1"
                                             FontSize="20"
                                             Text="{Binding Contrapartida}"/>
                                         <Label
-                                            Grid.RowSpan="2"
+                                            Grid.RowSpan="3"
                                             Grid.Column="2"
                                             Margin="0,5,0,0"
                                             FontFamily="{StaticResource FontAwesomeSolid}"
                                             FontSize="20"
                                             HorizontalOptions="EndAndExpand"
+                                            VerticalOptions="CenterAndExpand"
                                             Text="&#xf105;"/>
                                     </Grid>
                                 </ViewCell>

@@ -1,0 +1,166 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Title="Pago Completo"
+    x:Class="AppTesisPagoServicios.Views.PagoCompletoPage">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Padding="10">
+                <Frame>
+                    <StackLayout>
+                        <Label 
+                            Text="{Binding PagoCompleto.Documento}"
+                            Font="Bold, 20"
+                            HorizontalTextAlignment="Center"
+                            VerticalOptions="CenterAndExpand" 
+                            HorizontalOptions="CenterAndExpand" />
+                        <Label 
+                            FormattedText="{Binding InformacionPago.ValorTotal}"
+                            VerticalOptions="CenterAndExpand" 
+                            HorizontalOptions="CenterAndExpand" />
+                        <Label 
+                            FormattedText="{Binding PagoCompleto.PaypalID}"
+                            VerticalOptions="CenterAndExpand" 
+                            HorizontalOptions="CenterAndExpand" />
+                    </StackLayout>
+                </Frame>
+                <Frame>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <StackLayout 
+                            Grid.Column="0" 
+                            HorizontalOptions="StartAndExpand" 
+                            Spacing="30">
+                            <Label 
+                                Text="Identificación"
+                                Font="Bold,16"/>
+                            <Label 
+                                Text="Nombre"
+                                Font="Bold,16"/>
+                            <Label 
+                                Text="Tipo Servicio"
+                                Font="Bold,16"/>
+                            <Label 
+                                Text="Servicio"
+                                Font="Bold,16"/>
+                            <Label 
+                                Text="Contrapartida"
+                                Font="Bold,16"/>
+                            <Label 
+                                Text="Comision"
+                                Font="Bold,16"/>
+                            <Label 
+                                Text="Valor Parcial"
+                                Font="Bold,16"/>
+                        </StackLayout>
+                        <StackLayout 
+                            Grid.Column="1" 
+                            HorizontalOptions="EndAndExpand"
+                            Spacing="30">
+                            <Label 
+                                HorizontalTextAlignment="End"
+                                Text="{Binding InformacionPago.Identificacion}"
+                                Font="Bold,16"/>
+                            <Label 
+                                HorizontalTextAlignment="End"
+                                Text="{Binding InformacionPago.Nombre}"
+                                Margin="-10,0,0,0"
+                                Font="Bold,16"/>
+                            <Label 
+                                HorizontalTextAlignment="End"
+                                Text="{Binding InformacionPago.TipoServicio}"
+                                Font="Bold,16"/>
+                            <Label 
+                                HorizontalTextAlignment="End"
+                                Text="{Binding InformacionPago.Servicio}"
+                                Font="Bold,16"/>
+                            <Label 
+                                HorizontalTextAlignment="End"
+                                Text="{Binding InformacionPago.Contrapartida}"
+                                Font="Bold,16"/>
+                            <Label 
+                                HorizontalTextAlignment="End"
+                                Text="{Binding InformacionPago.Comision, StringFormat='$ {0:N}'}"
+                                Font="Bold,16"/>
+                            <Label 
+                                HorizontalTextAlignment="End"
+                                Text="{Binding InformacionPago.ValorAPagar, StringFormat='$ {0:N}'}"
+                                Font="Bold,16"/>
+                        </StackLayout>
+                    </Grid>
+                </Frame>
+                <ListView  
+                    HeightRequest="{Binding AlturaRubros}"
+                    Margin="0,2,0,0"
+                    HasUnevenRows="True"
+                    ItemsSource="{Binding Rubros}"
+                    SelectionMode="None">
+                    <ListView.Header>
+                        <Frame Padding="0,10,0,0">
+                            <Label 
+                                HorizontalTextAlignment="Center"
+                                Text="Rubros seleccionados" 
+                                FontSize="18"/>
+                        </Frame>
+                    </ListView.Header>
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Frame>
+                                    <Grid RowSpacing="20">
+                                        <Label 
+                                            Grid.Row="0"
+                                            Grid.Column="0"
+                                            Text="Prioridad:" 
+                                            FontSize="18"/>
+                                        <Label
+                                            Grid.Row="0"
+                                            Grid.Column="1"
+                                            FontSize="18"
+                                            HorizontalTextAlignment="End"
+                                            Text="{Binding Prioridad}"/>
+                                        <Label 
+                                            Grid.Row="1"
+                                            Grid.Column="0"
+                                            Text="Periodo:" 
+                                            FontSize="18"/>
+                                        <Label
+                                            Grid.Row="1"
+                                            Grid.Column="1"
+                                            FontSize="18"
+                                            HorizontalTextAlignment="End"
+                                            Text="{Binding Periodo}"/>
+                                        <Label 
+                                            Grid.Row="2"
+                                            Grid.Column="0"
+                                            Text="ValorAPagar:" 
+                                            FontSize="18"/>
+                                        <Label
+                                            Grid.Row="2"
+                                            Grid.Column="1"
+                                            FontSize="18"
+                                            HorizontalTextAlignment="End"
+                                            Text="{Binding ValorAPagar, StringFormat='${0:N}'}"/>
+                                    </Grid>
+                                </Frame>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                <Button 
+                    TextColor="White"
+                    Margin="0,30,0,0"
+                    BackgroundColor="#233979"
+                    Text="Listo"
+                    Command="{Binding ListoCmd}"/>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

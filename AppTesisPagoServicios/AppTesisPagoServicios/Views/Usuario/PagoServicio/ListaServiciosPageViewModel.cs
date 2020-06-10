@@ -34,9 +34,20 @@ namespace AppTesisPagoServicios.Views
                 }
             }
         }
-
-        public CatalogoMD TipoServicio { get; set; }
-
+        
+        public CatalogoMD TipoServicio
+        {
+            get => tipoServicioSeleccionado;
+            set
+            {
+                if (tipoServicioSeleccionado != value)
+                {
+                    tipoServicioSeleccionado = value;
+                    TipoServicioSeleccionadoEjecutar(tipoServicioSeleccionado);
+                }
+            }
+        }
+        
         public ObservableCollection<CatalogoMD> TiposServicios { get; set; }
         public ObservableCollection<ServicioMD> Servicios { get; set; }
         public ObservableCollection<CatalogoMD> TipoPago { get; set; }
@@ -51,6 +62,7 @@ namespace AppTesisPagoServicios.Views
         public List<ServicioMS> _servicios { get; set; }
 
         private ServicioMD servicioSeleccionado;
+        private CatalogoMD tipoServicioSeleccionado;
 
         public ListaServiciosPageViewModel(INavigationService navigationService, IUserDialogs userDialogs, IServicioUsuario servicioUsuario)
         {
@@ -60,9 +72,9 @@ namespace AppTesisPagoServicios.Views
 
             Teclado = Keyboard.Default;
 
-            TipoServicio = new CatalogoMD();
-
             CosultarCmd = new DelegateCommand(ConsultarEjecutar);
+
+            MostrarTipo = true;
 
             TiposServicios = new ObservableCollection<CatalogoMD>();
             TipoPago = new ObservableCollection<CatalogoMD>();
@@ -87,29 +99,31 @@ namespace AppTesisPagoServicios.Views
 
                     var mensajeSalida = await _servicioUsuario.RealizaConsulta(consulta);
 
-                    if(mensajeSalida.UsuarioId != 0)
+                    if (mensajeSalida.Rubros != null)
                     {
+                        double valorAPagar = 0;
+
+                        foreach (var item in mensajeSalida.Rubros)
+                            valorAPagar += item.ValorAPagar;
+
                         NavigationParameters parameters = new NavigationParameters()
                         {
                             {"Consulta", mensajeSalida},
                             {"Contrapartida", Contrapartida},
                             {"TipoServicio", Servicio.TipoServicio.Nombre},
-                            {"Servicio", Servicio.Nombre},
-                            {"Rubros", mensajeSalida.Rubros}
+                            {"Servicio", Servicio},
+                            {"Rubros", mensajeSalida.Rubros},
+                            {"ValorApagar", valorAPagar}
                         };
 
-                        if (mensajeSalida.Rubros.Count == 1)
-                        {
-                            await _navigationService.NavigateAsync("InformacionPagoPage", parameters);
-                        }
-                        else
-                        {
+                        if (Servicio.TipoPago.Id == 1)
                             await _navigationService.NavigateAsync("ElegirPagoPage", parameters);
-                        }
+                        else
+                            await _navigationService.NavigateAsync("InformacionPagoPage", parameters);
                     }
                     else
                     {
-                        await _userDialogs.AlertAsync("Se encuentran valores para pagar");
+                        await _userDialogs.AlertAsync("No se encuentran valores a pagar");
                     }
                 }
             }
@@ -121,10 +135,60 @@ namespace AppTesisPagoServicios.Views
 
         private void ServicioSeleccionadoEjecutar(ServicioMD servicioSeleccionado)
         {
-            Longitud = servicioSeleccionado.LongitudReferencia;
-            if(servicioSeleccionado.TipoReferencia.Nombre.ToUpper().Contains("NUM"))
+            try
             {
-                Teclado = Keyboard.Numeric;
+                if(servicioSeleccionado != null)
+                {
+                    Longitud = servicioSeleccionado.LongitudReferencia;
+                    if (servicioSeleccionado.TipoReferencia.Nombre.ToUpper().Contains("NUM"))
+                    {
+                        Teclado = Keyboard.Numeric;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                _userDialogs.Toast(ex.Message);
+            }
+            
+        }
+
+        private void TipoServicioSeleccionadoEjecutar(CatalogoMD tipoServicioSeleccionado)
+        {
+            try
+            {
+                if (tipoServicioSeleccionado != null)
+                {
+                    if (tipoServicioSeleccionado.Id != 0)
+                    {
+                        Servicios.Clear();
+
+                        foreach (var item in _servicios)
+                        {
+                            if (tipoServicioSeleccionado.Id == item.TipoServicioId)
+                            {
+                                ServicioMD dato = new ServicioMD()
+                                {
+                                    ServicioId = item.ServicioId,
+                                    Activo = item.EstaActivo,
+                                    ComisionRubro = item.ComisionRubro,
+                                    LongitudReferencia = item.LongitudReferencia,
+                                    Nombre = item.Nombre,
+                                    ServicioConsulta = item.ServicioConsulta,
+                                    ServicioPago = item.ServicioPago,
+                                    TipoServicio = TiposServicios.Where(u => u.Id == item.TipoServicioId).FirstOrDefault(),
+                                    TipoPago = TipoPago.Where(u => u.Id == item.TipoPagoId).FirstOrDefault(),
+                                    TipoReferencia = TipoReferencia.Where(u => u.Id == item.TipoReferenciaId).FirstOrDefault(),
+                                };
+                                Servicios.Add(dato);
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                _userDialogs.Toast(ex.Message);
             }
         }
 
@@ -181,9 +245,10 @@ namespace AppTesisPagoServicios.Views
                         ComisionRubro = item.ComisionRubro,
                         LongitudReferencia = item.LongitudReferencia,
                         Nombre = item.Nombre,
-                        ServicioHttp = item.ServicioHttp,
+                        ServicioConsulta = item.ServicioConsulta,
+                        ServicioPago = item.ServicioPago,
                         TipoServicio = TiposServicios.Where(u => u.Id == item.TipoServicioId).FirstOrDefault(),
-                        TipoPago = TipoPago.Where(u=> u.Id == item.TipoPagoId).FirstOrDefault(),
+                        TipoPago = TipoPago.Where(u => u.Id == item.TipoPagoId).FirstOrDefault(),
                         TipoReferencia = TipoReferencia.Where(u => u.Id == item.TipoReferenciaId).FirstOrDefault(),
                     };
                     Servicios.Add(dato);
@@ -201,21 +266,17 @@ namespace AppTesisPagoServicios.Views
 
         public void OnNavigatedTo(INavigationParameters parameters)
         {
-            if (parameters.ContainsKey("TipoServicio"))
-            {
-                MostrarTipo = false;
-                TipoServicio = parameters["TipoServicio"] as CatalogoMD;
-            }
-            else
-            {
-                MostrarTipo = true;
-            }
-
             if (parameters.ContainsKey("Servicios"))
             {
                 _servicios = parameters["Servicios"] as List<ServicioMS>;
 
                 ObtenerDatos();
+            }
+
+            if (parameters.ContainsKey("TipoServicio"))
+            {
+                MostrarTipo = false;
+                TipoServicio = parameters["TipoServicio"] as CatalogoMD;
             }
         }
     }

@@ -13,5 +13,8 @@ namespace AppTesisPagoServicios.Models.DTO
         public string Servicio { get; set; }
         public string Contrapartida { get; set; }
         public FormattedString ValorTotal { get; set; }
+        public double ValorTotalDato { get; set; }
+        public string Nombre { get; set; }
+        public string Identificacion { get; set; }
     }
 }

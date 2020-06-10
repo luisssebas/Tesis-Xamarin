@@ -15,7 +15,7 @@ namespace AppTesisPagoServicios.Services
             menu.MenuTitle = "Catálogos";
             menu.MenuDetail = "Catalogos";
             menu.Vista = "CatalogosTabbedPage";
-            menu.Imagen = "\uf0ce";
+            menu.Imagen = "\uf03a";
             menu.ColorFondo = "#FFFFFF";
             menu.Color = "#4D4D4D";
             menu.EsAdmin = true;
@@ -26,7 +26,7 @@ namespace AppTesisPagoServicios.Services
             menu.MenuTitle = "Servicio";
             menu.MenuDetail = "Servicio";
             menu.Vista = "ServicioAdminPage";
-            menu.Imagen = "\uf0d6";
+            menu.Imagen = "\uf0eb";
             menu.ColorFondo = "#FFFFFF";
             menu.Color = "#4D4D4D";
             menu.EsAdmin = true;
@@ -37,7 +37,7 @@ namespace AppTesisPagoServicios.Services
             menu.MenuTitle = "Parametrizaciones";
             menu.MenuDetail = "Parametrizaciones";
             menu.Vista = "ParametrizacionPage";
-            menu.Imagen = "\uf080";
+            menu.Imagen = "\uf249";
             menu.ColorFondo = "#FFFFFF";
             menu.Color = "#4D4D4D";
             menu.EsAdmin = true;
@@ -47,8 +47,8 @@ namespace AppTesisPagoServicios.Services
             menu = new MenuMD();
             menu.MenuTitle = "Reportes";
             menu.MenuDetail = "Reportes";
-            menu.Vista = "ReporteConsultaPage";
-            menu.Imagen = "\uf080";
+            menu.Vista = "ReporteBusquedaPage";
+            menu.Imagen = "\uf0ce";
             menu.ColorFondo = "#FFFFFF";
             menu.Color = "#4D4D4D";
             menu.EsAdmin = true;
@@ -63,7 +63,7 @@ namespace AppTesisPagoServicios.Services
             menu.MenuTitle = "Cerrar Sesión";
             menu.MenuDetail = "Cerrar Sesión";
             menu.Vista = "PantallaInicialPage";
-            menu.Imagen = "\uf0a8";
+            menu.Imagen = "\uf023";
             menu.ColorFondo = "#FFFFFF";
             menu.Color = "#4D4D4D";
             menu.EsAdmin = true;
@@ -80,7 +80,7 @@ namespace AppTesisPagoServicios.Services
             menu.MenuTitle = "Tipo de servicios";
             menu.MenuDetail = "Tipo de servicios";
             menu.Vista = "SeleccionTipoServiciosPage";
-            menu.Imagen = "\uf0ce";
+            menu.Imagen = "\uf03a";
             menu.ColorFondo = "#FFFFFF";
             menu.Color = "#4D4D4D";
             menu.EsAdmin = true;
@@ -99,6 +99,17 @@ namespace AppTesisPagoServicios.Services
             lista.Add(menu);
 
             menu = new MenuMD();
+            menu.MenuTitle = "Historial de pagos";
+            menu.MenuDetail = "Historial de pagos";
+            menu.Vista = "HistorialBusquedaPage";
+            menu.Imagen = "\uf073";
+            menu.ColorFondo = "#FFFFFF";
+            menu.Color = "#4D4D4D";
+            menu.EsAdmin = true;
+            menu.EsUsuario = false;
+            lista.Add(menu);
+
+            menu = new MenuMD();
             menu.ColorFondo = "#FFFFFF";
             lista.Add(menu);
 
@@ -106,7 +117,7 @@ namespace AppTesisPagoServicios.Services
             menu.MenuTitle = "Cerrar Sesión";
             menu.MenuDetail = "Cerrar Sesión";
             menu.Vista = "PantallaInicialPage";
-            menu.Imagen = "\uf0a8";
+            menu.Imagen = "\uf023";
             menu.ColorFondo = "#FFFFFF";
             menu.Color = "#4D4D4D";
             menu.EsAdmin = true;

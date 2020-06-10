@@ -10,9 +10,9 @@ using Xamarin.Forms.Xaml;
 namespace AppTesisPagoServicios.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class RegistroPayPalPage : ContentPage
+    public partial class HistorialBusquedaPage : ContentPage
     {
-        public RegistroPayPalPage()
+        public HistorialBusquedaPage()
         {
             InitializeComponent();
         }

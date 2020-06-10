@@ -12,7 +12,17 @@
     xmlns:pages="clr-namespace:AppTesisPagoServicios.Views"
     x:Class="AppTesisPagoServicios.Views.AdministradorPage">
     <ContentPage.Content>
-        <ContentView>
-        </ContentView>
+        <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Spacing="30">
+            <Label
+                FontFamily="{StaticResource FontAwesomeSolid}"
+                Text="&#xf508;"
+                FontSize="200"
+                TextColor="#233979"/>
+            <Label
+                Text="Administrador"
+                HorizontalTextAlignment="Center"
+                Font="Bold, 25"
+                TextColor="#233979"/>
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>

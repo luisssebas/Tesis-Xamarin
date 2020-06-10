@@ -1,4 +1,5 @@
 ﻿using Acr.UserDialogs;
+using AppTesisPagoServicios.Helpers;
 using AppTesisPagoServicios.Models.DTO;
 using AppTesisPagoServicios.Models.MensajeriaEntrada;
 using Prism.Commands;
@@ -9,6 +10,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
+using static AppTesisPagoServicios.Models.DTO.ServicioMD;
 
 namespace AppTesisPagoServicios.Views
 {
@@ -80,45 +82,52 @@ namespace AppTesisPagoServicios.Views
             {
                 using (_userDialogs.Loading("Cargando"))
                 {
-                    ServicioME mensajeEntrada = new ServicioME()
-                    {
-                        EstaActivo = Servicio.EstaActivo == "Activado" ? true : false,
-                        Nombre = Servicio.Nombre,
-                        ComisionRubro = Servicio.ComisionRubro,
-                        LongitudReferencia = Servicio.LongitudReferencia,
-                        ServicioHttp = Servicio.ServicioHttp,
-                        TipoPagoId = Servicio.TipoPago.Id,
-                        TipoReferenciaId = Servicio.TipoReferencia.Id,
-                        TipoServicioId = Servicio.TipoServicio.Id,
-                        ServicioId = Servicio.ServicioId                        
-                    };
+                    ServicioValidator servicioValidador = new ServicioValidator();
+                    FluentValidation.Results.ValidationResult validationResult = servicioValidador.Validate(Servicio);
 
-                    if (mensajeEntrada.ServicioId == 0)
-                    {
-                        var mensajeSalida = await _servicioUsuario.GuardarServicio(mensajeEntrada);
-
-                        if (mensajeSalida)
-                        {
-                            await _userDialogs.AlertAsync("Se ha agregado un nuevo servicio");
-                            await _navigationService.NavigateAsync("/MenuPage/NavigationPage/ServicioAdminPage");
-                        }
-                        else
-                            await _userDialogs.AlertAsync("No se ha podido agregar");
-                    }
+                    if (!validationResult.IsValid)
+                        _userDialogs.Alert(ErroresValidacion.Despliega(validationResult));
                     else
                     {
-                        var mensajeSalida = await _servicioUsuario.ActualizarServicio(mensajeEntrada);
-
-                        if (mensajeSalida)
+                        ServicioME mensajeEntrada = new ServicioME()
                         {
-                            await _userDialogs.AlertAsync("Se ha actualizado el servicio");
-                            await _navigationService.NavigateAsync("/MenuPage/NavigationPage/ServicioAdminPage");
+                            EstaActivo = Servicio.Activo,
+                            Nombre = Servicio.Nombre,
+                            ComisionRubro = Servicio.ComisionRubro,
+                            LongitudReferencia = Servicio.LongitudReferencia,
+                            ServicioConsulta = Servicio.ServicioConsulta,
+                            ServicioPago = Servicio.ServicioPago,
+                            TipoPagoId = Servicio.TipoPago.Id,
+                            TipoReferenciaId = Servicio.TipoReferencia.Id,
+                            TipoServicioId = Servicio.TipoServicio.Id,
+                            ServicioId = Servicio.ServicioId
+                        };
+
+                        if (mensajeEntrada.ServicioId == 0)
+                        {
+                            var mensajeSalida = await _servicioUsuario.GuardarServicio(mensajeEntrada);
+
+                            if (mensajeSalida)
+                            {
+                                await _userDialogs.AlertAsync("Se ha agregado un nuevo servicio");
+                                await _navigationService.NavigateAsync("/MenuPage/NavigationPage/ServicioAdminPage");
+                            }
+                            else
+                                await _userDialogs.AlertAsync("No se ha podido agregar");
                         }
                         else
-                            await _userDialogs.AlertAsync("No se ha podido actualizar");
-                    }
+                        {
+                            var mensajeSalida = await _servicioUsuario.ActualizarServicio(mensajeEntrada);
 
-                    
+                            if (mensajeSalida)
+                            {
+                                await _userDialogs.AlertAsync("Se ha actualizado el servicio");
+                                await _navigationService.NavigateAsync("/MenuPage/NavigationPage/ServicioAdminPage");
+                            }
+                            else
+                                await _userDialogs.AlertAsync("No se ha podido actualizar");
+                        }
+                    }
                 }
             }
             catch (Exception ex)
@@ -156,7 +165,8 @@ namespace AppTesisPagoServicios.Views
                     EstaActivo = servicio.EstaActivo,
                     LongitudReferencia = servicio.LongitudReferencia,
                     Nombre = servicio.Nombre,
-                    ServicioHttp = servicio.ServicioHttp,
+                    ServicioConsulta = servicio.ServicioConsulta,
+                    ServicioPago = servicio.ServicioPago,
                     ServicioId = servicio.ServicioId,
                     TipoPago = TiposPagos.Where(u=> u.Id == servicio.TipoPago.Id).FirstOrDefault(),
                     Activo = servicio.Activo

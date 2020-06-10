@@ -1,12 +1,11 @@
 ﻿using Acr.UserDialogs;
 using AppTesisPagoServicios.Models.DTO;
 using AppTesisPagoServicios.Models.MensajeriaSalida;
-using Prism.Commands;
 using Prism.Navigation;
 using PropertyChanged;
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 
@@ -19,14 +18,11 @@ namespace AppTesisPagoServicios.Views
         private readonly INavigationService _navigationService;
         private readonly IServicioUsuario _servicioUsuario;
 
-        public DelegateCommand BuscarConsultaCmd { get; set; }
-
+        public ConsultaMD Consulta { get; set; }
         public CatalogoMD TipoServicio { get; set; }
+        public ServicioMD Servicio { get; set; }
 
-        public ObservableCollection<CatalogoMD> TiposServicios { get; set; }
-        public ObservableCollection<ConsultaMD> Consultas { get; set; }
-        public ObservableCollection<ConsultaMD> BuscarConsultas { get; set; }
-
+        private ConsultaMD _consulta;
         private List<ServicioMS> _servicios;
 
         public ReporteConsultaPageViewModel(INavigationService navigationService, IUserDialogs userDialogs, IServicioUsuario servicioUsuario)
@@ -35,63 +31,48 @@ namespace AppTesisPagoServicios.Views
             _userDialogs = userDialogs;
             _servicioUsuario = servicioUsuario;
 
-            TiposServicios = new ObservableCollection<CatalogoMD>();
-            Consultas = new ObservableCollection<ConsultaMD>();
-            BuscarConsultas = new ObservableCollection<ConsultaMD>();
-
-            TipoServicio = new CatalogoMD();
-
-            BuscarConsultaCmd = new DelegateCommand(BuscarConsultaEjecutar);
-        }
-
-        private void BuscarConsultaEjecutar()
-        {
-            try
-            {
-                var servicio = _servicios.Where(u => u.TipoServicioId == TipoServicio.Id).FirstOrDefault();
-                BuscarConsultas = new ObservableCollection<ConsultaMD>(Consultas.Where(u => u.ServicioId == servicio.ServicioId).ToList());
-            }
-            catch (Exception ex)
-            {
-                _userDialogs.Toast(ex.Message);
-            }
         }
 
         public async void ObtenerDatos()
         {
             try
             {
-                var tipoServicio = await _servicioUsuario.ListaTipoServicios();
-                var consultas = await _servicioUsuario.ListaConsultas();
                 _servicios = await _servicioUsuario.ListaServicios();
-                TiposServicios.Clear();
-                Consultas.Clear();
+                var tipoServicios = await _servicioUsuario.ListaTipoServicios();
 
-                foreach (var item in tipoServicio)
+                Consulta = new ConsultaMD()
                 {
-                    CatalogoMD dato = new CatalogoMD()
-                    {
-                        Id = item.TipoServicioId,
-                        EstaActivo = item.EstaActivo,
-                        Nombre = item.Nombre
-                    };
-                    TiposServicios.Add(dato);
-                }
+                    ServicioId = _consulta.ServicioId,
+                    ConsultaId = _consulta.ConsultaId,
+                    Descripcion = _consulta.Descripcion,
+                    FechaConsulta = _consulta.FechaConsulta,
+                    Referencia = _consulta.Referencia,
+                    Rubros = _consulta.Rubros,
+                    UsuarioId = _consulta.UsuarioId,
+                    Nombre = _consulta.Nombre
+                };
 
-                foreach (var item in consultas)
+                var servicio = _servicios.Where(u => u.ServicioId == Consulta.ServicioId).FirstOrDefault();
+                var tipoServicio = tipoServicios.Where(u => u.TipoServicioId == servicio.TipoServicioId).FirstOrDefault();
+
+                TipoServicio = new CatalogoMD()
                 {
-                    ConsultaMD dato = new ConsultaMD()
-                    {
-                        ServicioId = item.ServicioId,
-                        ConsultaId = item.ConsultaId,
-                        Descripcion = item.Descripcion,
-                        FechaConsulta = item.FechaConsulta,
-                        Referencia = item.Referencia,
-                        Rubros = item.Rubros,
-                        UsuarioId = item.UsuarioId
-                    };
-                    Consultas.Add(dato);
-                }
+                     Id = tipoServicio.TipoServicioId,
+                     EstaActivo = tipoServicio.EstaActivo,
+                     Nombre = tipoServicio.Nombre
+                };
+
+                Servicio = new ServicioMD()
+                {
+                    TipoServicio = TipoServicio,
+                    ComisionRubro = servicio.ComisionRubro,
+                    LongitudReferencia = servicio.LongitudReferencia,
+                    Nombre = servicio.Nombre,
+                    ServicioConsulta = servicio.ServicioConsulta,
+                    ServicioPago = servicio.ServicioPago,
+                    ServicioId = servicio.ServicioId,
+                    Activo = servicio.EstaActivo
+                };
             }
             catch (Exception ex)
             {
@@ -105,6 +86,8 @@ namespace AppTesisPagoServicios.Views
 
         public void OnNavigatedTo(INavigationParameters parameters)
         {
+            if (parameters.ContainsKey("Consulta"))
+                _consulta = parameters["Consulta"] as ConsultaMD;
             ObtenerDatos();
         }
     }

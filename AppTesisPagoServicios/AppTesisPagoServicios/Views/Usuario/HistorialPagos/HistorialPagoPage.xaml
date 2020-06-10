@@ -1,0 +1,185 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Title="Pago"
+    x:Class="AppTesisPagoServicios.Views.HistorialPagoPage">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Padding="10">
+                <Frame>
+                    <StackLayout HorizontalOptions="CenterAndExpand">
+                        <Label 
+                            HorizontalTextAlignment="Center"
+                            Text="Valor Pagado"
+                            FontSize="20"/>
+                        <Label 
+                            HorizontalTextAlignment="Center"
+                            FormattedText="{Binding PagoCompleto.ValorPagado}"
+                            FontSize="20"/>
+                    </StackLayout>
+                </Frame>
+
+                <Frame>
+                    <Grid RowSpacing="20">
+                        <Label 
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            FontSize="18"
+                            Text="Tipo de servicio: "/>
+                        <Label 
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            FontSize="18"
+                            HorizontalTextAlignment="End"
+                            Text="{Binding TipoServicio.Nombre}"/>
+                        <Label 
+                            Grid.Row="1"
+                            Grid.Column="0"
+                            FontSize="18"
+                            Text="Servicio: "/>
+                        <Label 
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            HorizontalTextAlignment="End"
+                            FontSize="18"
+                            Text="{Binding Servicio.Nombre}"/>
+                    </Grid>
+                </Frame>
+                <Frame>
+                    <Grid RowSpacing="20">
+                        <Label 
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            FontSize="18"
+                            Text="Identificación:"/>
+                        <Label 
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            FontSize="18"
+                            HorizontalTextAlignment="End"
+                            Text="{Binding PagoCompleto.Identificacion}"/>
+                        <Label 
+                            Grid.Row="1"
+                            Grid.Column="0"
+                            FontSize="18"
+                            Text="Nombre:"/>
+                        <Label 
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            HorizontalTextAlignment="End"
+                            FontSize="18"
+                            Margin="-50,0,0,0"
+                            Text="{Binding PagoCompleto.Nombre}"/>
+                        <Label 
+                            Grid.Row="2"
+                            Grid.Column="0"
+                            FontSize="18"
+                            Text="Documento:"/>
+                        <Label 
+                            Grid.Row="2"
+                            Grid.Column="1"
+                            HorizontalTextAlignment="End"
+                            FontSize="18"
+                            Text="{Binding PagoCompleto.Documento}"/>
+                        <Label 
+                            Grid.Row="3"
+                            Grid.Column="0"
+                            FontSize="18"
+                            Text="PaypalID:"/>
+                        <Label 
+                            Grid.Row="3"
+                            Grid.Column="1"
+                            HorizontalTextAlignment="End"
+                            FontSize="18"
+                            Text="{Binding PagoCompleto.PaypalID}"/>
+                        <Label 
+                            Grid.Row="4"
+                            Grid.Column="0"
+                            FontSize="18"
+                            Text="Fecha:"/>
+                        <Label 
+                            Grid.Row="4"
+                            Grid.Column="1"
+                            HorizontalTextAlignment="End"
+                            FontSize="18"
+                            Margin="-50,0,0,0"
+                            Text="{Binding PagoCompleto.Fecha}"/>
+                        <Label 
+                            Grid.Row="5"
+                            Grid.Column="0"
+                            FontSize="18"
+                            Text="Comisión:"/>
+                        <Label 
+                            Grid.Row="5"
+                            Grid.Column="1"
+                            HorizontalTextAlignment="End"
+                            FontSize="18"
+                            Text="{Binding PagoCompleto.Comision, StringFormat='${0:N}'}"/>
+                    </Grid>
+                </Frame>
+                <ListView  
+                    HeightRequest="{Binding AlturaRubros}"
+                    Margin="0,2,0,0"
+                    HasUnevenRows="True"
+                    ItemsSource="{Binding Rubros}"
+                    SelectionMode="None">
+                    <ListView.Header>
+                        <Frame Padding="0,10,0,0">
+                            <Label 
+                                HorizontalTextAlignment="Center"
+                                Text="Rubros pagados" 
+                                FontSize="18"/>
+                        </Frame>
+                    </ListView.Header>
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Frame>
+                                    <Grid RowSpacing="20">
+                                        <Label 
+                                            Grid.Row="0"
+                                            Grid.Column="0"
+                                            Text="Prioridad:" 
+                                            FontSize="18"/>
+                                        <Label
+                                            Grid.Row="0"
+                                            Grid.Column="1"
+                                            FontSize="18"
+                                            HorizontalTextAlignment="End"
+                                            Text="{Binding Prioridad}"/>
+                                        <Label 
+                                            Grid.Row="1"
+                                            Grid.Column="0"
+                                            Text="Periodo:" 
+                                            FontSize="18"/>
+                                        <Label
+                                            Grid.Row="1"
+                                            Grid.Column="1"
+                                            FontSize="18"
+                                            HorizontalTextAlignment="End"
+                                            Text="{Binding Periodo}"/>
+                                        <Label 
+                                            Grid.Row="2"
+                                            Grid.Column="0"
+                                            Text="ValorAPagar:" 
+                                            FontSize="18"/>
+                                        <Label
+                                            Grid.Row="2"
+                                            Grid.Column="1"
+                                            FontSize="18"
+                                            HorizontalTextAlignment="End"
+                                            Text="{Binding ValorAPagar, StringFormat='${0:N}'}"/>
+                                    </Grid>
+                                </Frame>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

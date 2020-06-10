@@ -50,6 +50,7 @@ namespace AppTesisPagoServicios
 
         #region Consulta
         Task<List<ConsultaMS>> ListaConsultas();
+        Task<List<ConsultaMS>> ListaConsultasFechas(ConsultaFechaME mensajeEntrada);
         Task<ConsultaMS> RealizaConsulta(ConsultaME mensajeEntrada);
         #endregion
 
@@ -58,6 +59,17 @@ namespace AppTesisPagoServicios
         Task<bool> GuardarServicioUsuario(ServicioUsuarioME mensajeEntrada);
         Task<bool> ActualizarServicioUsuario(ServicioUsuarioME mensajeEntrada);
         Task<bool> EliminarServicioUsuario(int mensajeEntrada);
+        #endregion
+
+        #region OTP
+        Task<bool> EnviarOTP(string mensajeEntrada);
+        Task<bool> ValidaOTP(OtpME mensajeEntrada);
+        #endregion
+
+        #region Pago
+        Task<PagoMS> RealizarPago(PagoME mensajeEntrada);
+        Task<List<PagoMS>> ListaPagoFechas(ConsultaFechaME mensajeEntrada);
+        Task<List<PagoMS>> ListaPagos();
         #endregion
     }
 }

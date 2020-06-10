@@ -1,15 +1,49 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d"
-             x:Class="AppTesisPagoServicios.Views.Usuario.Servicios.RegistrarServicioPage">
+<ContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Title="Servicio"
+    x:Class="AppTesisPagoServicios.Views.RegistrarServicioPage">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <ScrollView>
+            <StackLayout Padding="20">
+                <Label 
+                    Text="Tipo Servicio"/>
+                <Picker 
+                    Title="Seleccionar tipo servicio"
+                    ItemsSource="{Binding TiposServicios}" 
+                    ItemDisplayBinding="{Binding Nombre}" 
+                    SelectedItem="{Binding TipoServicio}"/>
+                <Label 
+                    Text="Servicio"/>
+                <Picker 
+                    Title="Seleccionar servicio"
+                    ItemsSource="{Binding Servicios}" 
+                    ItemDisplayBinding="{Binding Nombre}" 
+                    SelectedItem="{Binding Servicio}"/>
+                <Label 
+                    Text="Contrapartida"/>
+                <Entry 
+                    Text="{Binding ServicioUsuario.Contrapartida}" 
+                    Keyboard="Numeric"/>
+                <Button 
+                    TextColor="White"
+                    Margin="0,30,0,0"
+                    BackgroundColor="#233979"
+                    Text="Guardar" 
+                    Command="{Binding GuardarServicioUsuarioCmd}"/>
+                <Button 
+                    Text="Pagar" 
+                    IsVisible="{Binding MostrarPagar}"
+                    Command="{Binding PagarServicioUsuarioCmd}"/>
+                <Button 
+                    Text="Eliminar" 
+                    IsVisible="{Binding MostrarEliminar}"
+                    Command="{Binding EliminarServicioUsuarioCmd}"/>
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

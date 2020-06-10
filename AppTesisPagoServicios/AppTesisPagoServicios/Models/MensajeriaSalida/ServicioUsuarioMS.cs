@@ -6,6 +6,7 @@ namespace AppTesisPagoServicios.Models.MensajeriaSalida
 {
     public class ServicioUsuarioMS
     {
+        public int ServicioUsuarioId { get; set; }
         public int ServicioId { get; set; }
         public int UsuarioId { get; set; }
         public string TipoServicio { get; set; }

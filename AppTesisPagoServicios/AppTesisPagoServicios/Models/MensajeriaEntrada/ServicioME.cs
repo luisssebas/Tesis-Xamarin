@@ -13,7 +13,8 @@ namespace AppTesisPagoServicios.Models.MensajeriaEntrada
         public string Nombre { get; set; }
         public int LongitudReferencia { get; set; }
         public bool ComisionRubro { get; set; }
-        public string ServicioHttp { get; set; }
+        public string ServicioPago { get; set; }
+        public string ServicioConsulta { get; set; }
         public bool EstaActivo { get; set; }
     }
 }

@@ -519,6 +519,31 @@ namespace AppTesisPagoServicios.Services
             return mensajeSalida;
         }
 
+        public async Task<List<ConsultaMS>> ListaConsultasFechas(ConsultaFechaME mensajeEntrada)
+        {
+            List<ConsultaMS> mensajeSalida = new List<ConsultaMS>();
+            try
+            {
+                HttpClient client = new HttpClient();
+
+                var json = JsonConvert.SerializeObject(mensajeEntrada);
+                var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+                string uri = ApiUrl + ApiResource.Consulta_ListaConsultasPorFecha;
+                HttpResponseMessage response = await client.PostAsync(uri, content);
+                var responseString = await response.Content.ReadAsStringAsync();
+
+                mensajeSalida = JsonConvert.DeserializeObject<List<ConsultaMS>> (responseString);
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            return mensajeSalida;
+        }
+
         public async Task<ConsultaMS> RealizaConsulta(ConsultaME mensajeEntrada)
         {
             ConsultaMS mensajeSalida = new ConsultaMS();
@@ -553,7 +578,7 @@ namespace AppTesisPagoServicios.Services
             {
                 HttpClient client = new HttpClient();
 
-                string uri = ApiUrl + ApiResource.ServicioUsuario_ListarServiciosUsuarios + "/" + mensajeEntrada.ToString();
+                string uri = ApiUrl + ApiResource.ServicioUsuario_ListarServiciosUsuarios + "/" + mensajeEntrada;
                 HttpResponseMessage response = await client.GetAsync(uri);
                 var responseString = await response.Content.ReadAsStringAsync();
 
@@ -635,5 +660,128 @@ namespace AppTesisPagoServicios.Services
             return mensajeSalida;
         }
         #endregion
+
+        #region OTP
+        public async Task<bool> EnviarOTP(string mensajeEntrada)
+        {
+            bool mensajeSalida = false;
+            try
+            {
+                HttpClient client = new HttpClient();
+
+                string uri = ApiUrl + ApiResource.Usuario_EnviarOTP + mensajeEntrada;
+                HttpResponseMessage response = await client.GetAsync(uri);
+                var responseString = await response.Content.ReadAsStringAsync();
+
+                mensajeSalida = JsonConvert.DeserializeObject<bool>(responseString);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            return mensajeSalida;
+        }
+
+        public async Task<bool> ValidaOTP(OtpME mensajeEntrada)
+        {
+            bool mensajeSalida = false;
+            try
+            {
+                HttpClient client = new HttpClient();
+
+                var json = JsonConvert.SerializeObject(mensajeEntrada);
+                var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+                string uri = ApiUrl + ApiResource.Usuario_ValidarOTP;
+                HttpResponseMessage response = await client.PostAsync(uri, content);
+                var responseString = await response.Content.ReadAsStringAsync();
+
+                mensajeSalida = JsonConvert.DeserializeObject<bool>(responseString);
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            return mensajeSalida;
+        }
+        #endregion
+
+        #region Pago
+        public async Task<PagoMS> RealizarPago(PagoME mensajeEntrada)
+        {
+            PagoMS mensajeSalida = new PagoMS();
+            try
+            {
+                HttpClient client = new HttpClient();
+
+                var json = JsonConvert.SerializeObject(mensajeEntrada);
+                var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+                string uri = ApiUrl + ApiResource.Pago_RealizarPago;
+                HttpResponseMessage response = await client.PostAsync(uri, content);
+                var responseString = await response.Content.ReadAsStringAsync();
+
+                mensajeSalida = JsonConvert.DeserializeObject<PagoMS>(responseString);
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            return mensajeSalida;
+        }
+
+        public async Task<List<PagoMS>> ListaPagoFechas(ConsultaFechaME mensajeEntrada)
+        {
+            List <PagoMS> mensajeSalida = new List<PagoMS>();
+            try
+            {
+                HttpClient client = new HttpClient();
+
+                var json = JsonConvert.SerializeObject(mensajeEntrada);
+                var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+                string uri = ApiUrl + ApiResource.Pago_ListaPagoFechas;
+                HttpResponseMessage response = await client.PostAsync(uri, content);
+                var responseString = await response.Content.ReadAsStringAsync();
+
+                mensajeSalida = JsonConvert.DeserializeObject<List<PagoMS>>(responseString);
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            return mensajeSalida;
+        }
+
+        public async Task<List<PagoMS>> ListaPagos()
+        {
+            List<PagoMS> mensajeSalida = new List<PagoMS>();
+            try
+            {
+                HttpClient client = new HttpClient();
+
+                string uri = ApiUrl + ApiResource.Pago_ListaPago;
+                HttpResponseMessage response = await client.GetAsync(uri);
+                var responseString = await response.Content.ReadAsStringAsync();
+
+                mensajeSalida = JsonConvert.DeserializeObject<List<PagoMS>>(responseString);
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            return mensajeSalida;
+        }
+        #endregion
+
     }
 }

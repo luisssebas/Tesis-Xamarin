@@ -48,7 +48,9 @@ namespace AppTesisPagoServicios.Views
                         MensajeNuevaCuenta = Parametrizacion.MensajeNuevaCuenta,
                         MensajePagoServicio = Parametrizacion.MensajePagoServicio,
                         MensajeRecuperacionContrasenia = Parametrizacion.MensajeRecuperacionContrasenia,
-                        ParametrizacionId = Parametrizacion.ParametrizacionId
+                        ParametrizacionId = Parametrizacion.ParametrizacionId,
+                        PuertoCorreo = Parametrizacion.PuertoCorreo,
+                        SmtpCorreo = Parametrizacion.SmtpCorreo
                     };
 
                     if (mensajeEntrada.ParametrizacionId == 0)
@@ -97,7 +99,9 @@ namespace AppTesisPagoServicios.Views
                             MensajeNuevaCuenta = mensajeSalida.FirstOrDefault().MensajeNuevaCuenta,
                             MensajePagoServicio = mensajeSalida.FirstOrDefault().MensajePagoServicio,
                             MensajeRecuperacionContrasenia = mensajeSalida.FirstOrDefault().MensajeRecuperacionContrasenia,
-                            ParametrizacionId = mensajeSalida.FirstOrDefault().ParametrizacionId
+                            ParametrizacionId = mensajeSalida.FirstOrDefault().ParametrizacionId,
+                            PuertoCorreo = mensajeSalida.FirstOrDefault().PuertoCorreo,
+                            SmtpCorreo = mensajeSalida.FirstOrDefault().SmtpCorreo
                         };
                     }
                 }

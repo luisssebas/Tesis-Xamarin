@@ -13,6 +13,8 @@
     <ContentPage.Content>
         <ScrollView>
             <StackLayout Padding="20">
+                <Label Text="Seleccione el tipo de servicio"/>
+                <Picker ItemsSource="{Binding TiposServicios}" ItemDisplayBinding="{Binding Nombre}" SelectedItem="{Binding Servicio.TipoServicio}"/>
                 <Label Text="Nombre"/>
                 <Entry Text="{Binding Servicio.Nombre}"/>
                 <Label Text="Seleccione el tipo de pago"/>
@@ -21,16 +23,26 @@
                 <Picker ItemsSource="{Binding TiposReferencias}" ItemDisplayBinding="{Binding Nombre}" SelectedItem="{Binding Servicio.TipoReferencia}"/>
                 <Label Text="Longitud de referencia"/>
                 <Entry Text="{Binding Servicio.LongitudReferencia}" Keyboard="Numeric"/>
-                <Label Text="Servicio Http"/>
-                <Entry Text="{Binding Servicio.ServicioHttp}"/>
-                <Label Text="Seleccione el tipo de servicio"/>
-                <Picker ItemsSource="{Binding TiposServicios}" ItemDisplayBinding="{Binding Nombre}" SelectedItem="{Binding Servicio.TipoServicio}"/>
+                <Label Text="Servicio Consulta"/>
+                <Entry Text="{Binding Servicio.ServicioConsulta}"/>
+                <Label Text="Servicio Pago"/>
+                <Entry Text="{Binding Servicio.ServicioPago}"/>
                 <Label Text="Comisión por pago"/>
                 <CheckBox IsChecked="{Binding Servicio.ComisionRubro}"/>
                 <Label Text="Esta Activo"/>
                 <CheckBox IsChecked="{Binding Servicio.Activo}"/>
-                <Button Text="Guardar" Command="{Binding GuardarServicioCmd}"/>
-                <Button Text="Eliminar" Command="{Binding EliminarServicioCmd}"/>
+                <Button 
+                    TextColor="White"
+                    Margin="0,20,0,0"
+                    BackgroundColor="#233979"
+                    Text="Guardar" 
+                    Command="{Binding GuardarServicioCmd}"/>
+                <Button 
+                    TextColor="White"
+                    Margin="0,10,0,0"
+                    BackgroundColor="#119BD8"
+                    Text="Eliminar" 
+                    Command="{Binding EliminarServicioCmd}"/>
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

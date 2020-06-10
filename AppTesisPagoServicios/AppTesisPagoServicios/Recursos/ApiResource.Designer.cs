@@ -70,11 +70,47 @@ namespace AppTesisPagoServicios.Recursos {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a /Consulta/ListaConsultasPorFecha.
+        /// </summary>
+        internal static string Consulta_ListaConsultasPorFecha {
+            get {
+                return ResourceManager.GetString("Consulta_ListaConsultasPorFecha", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a /Consulta/RealizarConsulta.
         /// </summary>
         internal static string Consulta_RealizaConsulta {
             get {
                 return ResourceManager.GetString("Consulta_RealizaConsulta", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a /Pago/ListaPago.
+        /// </summary>
+        internal static string Pago_ListaPago {
+            get {
+                return ResourceManager.GetString("Pago_ListaPago", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a /Pago/ListaPagoFechas.
+        /// </summary>
+        internal static string Pago_ListaPagoFechas {
+            get {
+                return ResourceManager.GetString("Pago_ListaPagoFechas", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a /Pago/RealizarPago.
+        /// </summary>
+        internal static string Pago_RealizarPago {
+            get {
+                return ResourceManager.GetString("Pago_RealizarPago", resourceCulture);
             }
         }
         
@@ -313,6 +349,15 @@ namespace AppTesisPagoServicios.Recursos {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a /Usuario/EnviarOTP?username=.
+        /// </summary>
+        internal static string Usuario_EnviarOTP {
+            get {
+                return ResourceManager.GetString("Usuario_EnviarOTP", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a /Usuario/GuardarUsuario.
         /// </summary>
         internal static string Usuario_GuardarUsuario {
@@ -336,6 +381,15 @@ namespace AppTesisPagoServicios.Recursos {
         internal static string Usuario_LoginUsuario {
             get {
                 return ResourceManager.GetString("Usuario_LoginUsuario", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a /Usuario/ValidaOTP.
+        /// </summary>
+        internal static string Usuario_ValidarOTP {
+            get {
+                return ResourceManager.GetString("Usuario_ValidarOTP", resourceCulture);
             }
         }
     }

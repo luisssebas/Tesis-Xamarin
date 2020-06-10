@@ -1,0 +1,136 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Title="OTP"
+    x:Class="AppTesisPagoServicios.Views.OTPPage">
+    <ContentPage.Content>
+        <StackLayout Padding="50,20,50,0">
+            <Label
+                x:Name="timer"
+                FontSize="30"
+                HorizontalOptions="Center"
+                Text=""
+                TextColor="#233979" />
+            <Entry 
+                x:Name="ValorOTP"
+                Text="{Binding ValorOTP, Mode=TwoWay}"
+                IsPassword="True"
+                HorizontalTextAlignment="Center"/>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Button
+                    x:Name="Posicion1"
+                    Grid.Column="0"
+                    Grid.Row="1"
+                    Text="1"
+                    Font="Bold, 16"
+                    TextColor="White"
+                    BackgroundColor="#233979">
+                </Button>
+                <Button
+                    x:Name="Posicion2"
+                    Grid.Column="1"
+                    Grid.Row="1"
+                    Text="2"
+                    Font="Bold, 16"
+                    TextColor="White"
+                    BackgroundColor="#233979"/>
+                <Button
+                    x:Name="Posicion3"
+                    Grid.Column="2"
+                    Grid.Row="1"
+                    Text="3"
+                    Font="Bold, 16"
+                    TextColor="White"
+                    BackgroundColor="#233979"/>
+                <Button
+                    x:Name="Posicion4"
+                    Grid.Column="0"
+                    Grid.Row="2"
+                    Text="4"
+                    Font="Bold, 16"
+                    TextColor="White"
+                    BackgroundColor="#233979"/>
+                <Button
+                    x:Name="Posicion5"
+                    Grid.Column="1"
+                    Grid.Row="2"
+                    Text="5"
+                    Font="Bold, 16"
+                    TextColor="White"
+                    BackgroundColor="#233979"/>
+                <Button
+                    x:Name="Posicion6"
+                    Grid.Column="2"
+                    Grid.Row="2"
+                    Text="6"
+                    Font="Bold, 16"
+                    TextColor="White"
+                    BackgroundColor="#233979"/>
+                <Button
+                    x:Name="Posicion7"
+                    Grid.Column="0"
+                    Grid.Row="3"
+                    Text="7"
+                    Font="Bold, 16"
+                    TextColor="White"
+                    BackgroundColor="#233979"/>
+                <Button
+                    x:Name="Posicion8"
+                    Grid.Column="1"
+                    Grid.Row="3"
+                    Text="8"
+                    Font="Bold, 16"
+                    TextColor="White"
+                    BackgroundColor="#233979"/>
+                <Button
+                    x:Name="Posicion9"
+                    Grid.Column="2"
+                    Grid.Row="3"
+                    Text="9"
+                    Font="Bold, 16"
+                    TextColor="White"
+                    BackgroundColor="#233979"/>
+                <Button
+                    x:Name="Posicion0"
+                    Grid.Column="0"
+                    Grid.Row="4"
+                    Text="0"
+                    Font="Bold, 16"
+                    TextColor="White"
+                    BackgroundColor="#233979"/>
+                <Button
+                    x:Name="Limpiar"
+                    Grid.Column="1"
+                    Grid.ColumnSpan="2"
+                    Grid.Row="4"
+                    Text="Borrar"
+                    Font="Bold, 16"
+                    TextColor="White"
+                    BackgroundColor="#233979"/>
+            </Grid>
+            <Button 
+                TextColor="White"
+                Margin="0,30,0,0"
+                BackgroundColor="#233979"
+                Text="Verificar" 
+                Command="{Binding ValidarOTPCmd}"
+                CommandParameter="{Binding ValorOTP}"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

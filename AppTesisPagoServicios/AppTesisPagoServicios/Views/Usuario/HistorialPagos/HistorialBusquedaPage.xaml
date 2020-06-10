@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Title="Búsqueda de pagos"
+    x:Class="AppTesisPagoServicios.Views.HistorialBusquedaPage">
+    <ContentPage.Content>
+        <StackLayout Padding="20" Spacing="20">
+            <Frame Margin="-10">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="60"/>
+                        <RowDefinition Height="45"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="5*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Picker 
+                        Grid.Row="0"
+                        Grid.ColumnSpan="2"
+                        ItemsSource="{Binding TiposServicios}" 
+                        SelectedItem="{Binding TipoServicio}"
+                        Title="Tipo de servicios"
+                        ItemDisplayBinding="{Binding Nombre}"
+                        FontSize="18"/>
+                    <Picker 
+                        Grid.Row="1"
+                        Grid.ColumnSpan="2"
+                        ItemsSource="{Binding Servicios}" 
+                        SelectedItem="{Binding Servicio}"
+                        Title="Servicios"
+                        ItemDisplayBinding="{Binding Nombre}"
+                        FontSize="18"/>
+                    <Grid 
+                        Margin="0,10,0,0"
+                        Grid.Row="2"
+                        Grid.ColumnSpan="2"
+                        RowSpacing="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="80"/>
+                        </Grid.RowDefinitions>
+                        <Label
+                            Grid.Row="0"
+                            VerticalOptions="Start"
+                            Margin="5,-10,0,0"
+                            Text="Fecha Inicio"/>
+                        <DatePicker 
+                            Grid.Row="0"
+                            VerticalOptions="Start"
+                            BackgroundColor="Transparent"
+                            Format="yyyy/MM/dd"
+                            Date="{Binding DiaInicio}"
+                            Grid.Column="0"
+                            FontSize="18"/>
+                        <Label 
+                            Grid.Row="0"
+                            Margin="5,-10,0,0"
+                            Grid.Column="1"
+                            Text="Fecha Fin"/>
+                        <DatePicker 
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            VerticalOptions="Start"
+                            Format="yyyy/MM/dd" 
+                            Date="{Binding DiaFin}"
+                            MaximumDate="{Binding DiaMaximo}"
+                            BackgroundColor="Transparent"
+                            FontSize="18"/>
+                    </Grid>
+                    <Button 
+                        Grid.Row="3"
+                        Grid.Column="1"
+                        BackgroundColor="#233979"
+                        TextColor="White"
+                        FontFamily="{StaticResource FontAwesomeSolid}"
+                        Text="&#xf002;"
+                        WidthRequest="40"
+                        Command="{Binding BuscarConsultaCmd}"/>
+                </Grid>
+            </Frame>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -29,6 +29,14 @@
                     Text="{Binding Parametrizacion.ContraseniaCorreo}" 
                     IsPassword="True"/>
                 <Label 
+                    Text="Puerto Correo"/>
+                <Entry 
+                    Text="{Binding Parametrizacion.PuertoCorreo}"/>
+                <Label 
+                    Text="Smtp Correo"/>
+                <Entry 
+                    Text="{Binding Parametrizacion.SmtpCorreo}"/>
+                <Label 
                     Text="Mensaje para recuperación de contraseña"/>
                 <Entry 
                     Text="{Binding Parametrizacion.MensajeRecuperacionContrasenia}"/>
@@ -41,6 +49,9 @@
                 <Entry 
                     Text="{Binding Parametrizacion.MensajeNuevaCuenta}"/>
                 <Button 
+                    TextColor="White"
+                    Margin="0,20,0,0"
+                    BackgroundColor="#233979"
                     Text="Guardar" 
                     Command="{Binding GuardarParametrizacionCmd}"/>
             </StackLayout>

@@ -42,6 +42,8 @@ namespace AppTesisPagoServicios.Droid
                 PhoneCountryCode = "593998800091",
             };
 
+            CrossPayPalManager.Init(config, this);
+            Plugin.Fingerprint.CrossFingerprint.SetCurrentActivityResolver(() => this);
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             LoadApplication(new App(new AndroidInitializer()));

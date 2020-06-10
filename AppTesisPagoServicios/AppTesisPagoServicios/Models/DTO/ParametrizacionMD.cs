@@ -11,6 +11,8 @@ namespace AppTesisPagoServicios.Models.DTO
         public int MaxIntentosLogin { get; set; }
         public string Correo { get; set; }
         public string ContraseniaCorreo { get; set; }
+        public string SmtpCorreo { get; set; }
+        public string PuertoCorreo { get; set; }
         public string MensajeRecuperacionContrasenia { get; set; }
         public string MensajePagoServicio { get; set; }
         public string MensajeNuevaCuenta { get; set; }

@@ -5,77 +5,78 @@
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    Title="Reportes"
+    Title="Información reporte"
     x:Class="AppTesisPagoServicios.Views.ReporteConsultaPage">
     <ContentPage.Content>
-        <StackLayout Padding="20">
-            <ListView
-                HasUnevenRows="True"
-                ItemsSource="{Binding BuscarConsultas}">
-                <ListView.Header>
-                    <StackLayout Orientation="Horizontal">
-                        <Picker 
-                            ItemsSource="{Binding TiposServicios}" 
-                            SelectedItem="{Binding TipoServicio}"
-                            Title="Tipo de servicios"
-                            ItemDisplayBinding="{Binding Nombre}"
-                            FontSize="20"/>
-                        <Button 
-                            Text="Buscar" 
-                            HeightRequest="5"
-                            Command="{Binding BuscarConsultaCmd}"/>
-                    </StackLayout>
-                </ListView.Header>
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell>
-                            <Grid Padding="10">
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="25"/>
-                                    <RowDefinition Height="*"/>
-                                    <RowDefinition Height="25"/>
-                                </Grid.RowDefinitions>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="25"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="25"/>
-                                </Grid.ColumnDefinitions>
-                                <Label
-                                    Grid.RowSpan="3"
-                                    Grid.Column="0"
-                                    Margin="0,5,0,0"
-                                    FontFamily="{StaticResource FontAwesomeSolid}"
-                                    FontSize="20"
-                                    VerticalOptions="CenterAndExpand"
-                                    HorizontalOptions="StartAndExpand"
-                                    Text="&#xf22d;"/>
-                                <Label
-                                    Grid.Row="0"
-                                    Grid.Column="1"
-                                    FontSize="20"
-                                    Text="{Binding FechaConsulta}"/>
-                                <Label
-                                    Grid.Row="1"
-                                    Grid.Column="1"
-                                    FontSize="20"
-                                    Text="{Binding Descripcion}"/>
-                                <Label
-                                    Grid.Row="2"
-                                    Grid.Column="1"
-                                    FontSize="20"
-                                    Text="{Binding Referencia}"/>
-                                <Label
-                                    Grid.Column="2"
-                                    Margin="0,5,0,0"
-                                    FontFamily="{StaticResource FontAwesomeSolid}"
-                                    FontSize="20"
-                                    HorizontalOptions="EndAndExpand"
-                                    Text="&#xf105;"/>
-                            </Grid>
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
+        <StackLayout Padding="10">
+            <Frame>
+                <Grid RowSpacing="20">
+                    <Label 
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        FontSize="18"
+                        Text="Tipo de servicio: "/>
+                    <Label 
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        FontSize="18"
+                        HorizontalTextAlignment="End"
+                        Text="{Binding TipoServicio.Nombre}"/>
+                    <Label 
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        FontSize="18"
+                        Text="Servicio: "/>
+                    <Label 
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        HorizontalTextAlignment="End"
+                        FontSize="18"
+                        Text="{Binding Servicio.Nombre}"/>
+                </Grid>
+            </Frame>
+            <Frame>
+                <Grid RowSpacing="20">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="3*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label 
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        FontSize="18"
+                        Text="Nombre"/>
+                    <Label 
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        HorizontalTextAlignment="End"
+                        FontSize="18"
+                        Text="{Binding Consulta.Nombre}"/>
+                    <Label 
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        FontSize="18"
+                        Text="Contrapartida"/>
+                    <Label 
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        HorizontalTextAlignment="End"
+                        FontSize="18"
+                        Text="{Binding Consulta.Referencia}"/>
+                    <Label 
+                        Grid.Row="2"
+                        Grid.Column="0"
+                        FontSize="18"
+                        Text="Fecha"/>
+                    <Label 
+                        Grid.Row="2"
+                        Grid.Column="1"
+                        Margin="-20,0,0,0"
+                        HorizontalTextAlignment="End"
+                        FontSize="18"
+                        Text="{Binding Consulta.FechaConsulta}"/>
+                </Grid>
+            </Frame>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

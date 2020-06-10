@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    xmlns:panview="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    xmlns:compo="clr-namespace:AppTesisPagoServicios.Helpers"
+    Title="Servicios"
+    x:Class="AppTesisPagoServicios.Views.SeleccionTipoServiciosPage">
+    <ContentPage.Content>
+        <Grid HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="150"/>
+                <RowDefinition Height="150"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="150"/>
+                <ColumnDefinition Width="150"/>
+            </Grid.ColumnDefinitions>
+            <panview:PancakeView
+                CornerRadius="50,0,0,0"
+                BackgroundColor="#233979"
+                Grid.Row="0" 
+                Grid.Column="0" >
+                <Label
+                    FontFamily="{StaticResource FontAwesomeSolid}"
+                    Text="&#xf0eb;"
+                    FontSize="50"
+                    TextColor="White"
+                    VerticalOptions="CenterAndExpand"
+                    HorizontalOptions="CenterAndExpand"/>
+                <panview:PancakeView.Behaviors>
+                    <compo:ViewTappedButtonBehavior Command="{Binding SeleccionarServicioLuzCmd}" />
+                </panview:PancakeView.Behaviors>
+            </panview:PancakeView>
+            <panview:PancakeView
+                Grid.Row="1" 
+                Grid.Column="0" 
+                CornerRadius="0,0,50,0"
+                BackgroundColor="#119BD8">
+                <Label
+                    FontFamily="{StaticResource FontAwesomeSolid}"
+                    Text="&#xf043;"
+                    FontSize="50"
+                    TextColor="White"
+                    VerticalOptions="CenterAndExpand"
+                    HorizontalOptions="CenterAndExpand"/>
+                <panview:PancakeView.Behaviors>
+                    <compo:ViewTappedButtonBehavior Command="{Binding SeleccionarServicioAguaCmd}" />
+                </panview:PancakeView.Behaviors>
+            </panview:PancakeView>
+            <panview:PancakeView
+                Grid.Row="0" 
+                CornerRadius="0,50,0,0"
+                BackgroundColor="#119BD8"
+                Grid.Column="1">
+                <Label
+                    FontFamily="{StaticResource FontAwesomeSolid}"
+                    Text="&#xf095;"
+                    FontSize="50"
+                    TextColor="White"
+                    VerticalOptions="CenterAndExpand"
+                    HorizontalOptions="CenterAndExpand"/>
+                <panview:PancakeView.Behaviors>
+                    <compo:ViewTappedButtonBehavior Command="{Binding SeleccionarServicioTelefonoCmd}" />
+                </panview:PancakeView.Behaviors>
+            </panview:PancakeView>
+            <panview:PancakeView
+                Grid.Row="1" 
+                CornerRadius="0,0,0,50"
+                Grid.Column="1" 
+                BackgroundColor="#233979">
+                <Label
+                    FontFamily="{StaticResource FontAwesomeSolid}"
+                    Text="&#xf067;"
+                    FontSize="50"
+                    TextColor="White"
+                    VerticalOptions="CenterAndExpand"
+                    HorizontalOptions="CenterAndExpand"/>
+                <panview:PancakeView.Behaviors>
+                    <compo:ViewTappedButtonBehavior Command="{Binding SeleccionarServicioCmd}" />
+                </panview:PancakeView.Behaviors>
+            </panview:PancakeView>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

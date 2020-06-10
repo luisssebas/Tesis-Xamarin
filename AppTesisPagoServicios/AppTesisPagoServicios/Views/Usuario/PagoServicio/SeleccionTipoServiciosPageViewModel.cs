@@ -157,7 +157,8 @@ namespace AppTesisPagoServicios.Views
                         ComisionRubro = item.ComisionRubro,
                         LongitudReferencia = item.LongitudReferencia,
                         Nombre = item.Nombre,
-                        ServicioHttp = item.ServicioHttp
+                        ServicioPago = item.ServicioPago,
+                        ServicioConsulta = item.ServicioConsulta
                     };
                     Servicios.Add(dato);
                 }

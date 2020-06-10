@@ -21,8 +21,18 @@
                         <Entry Placeholder="Ingrese el nombre" Text="{Binding TipoServicio.Nombre}"/>
                         <Label Text="Esta Activo"/>
                         <CheckBox IsChecked="{Binding TipoServicio.EstaActivo}"/>
-                        <Button Text="Guardar" Command="{Binding GuardarTipoServicioCmd}"/>
-                        <Button Text="Eliminar" Command="{Binding EliminarTipoServicioCmd}"/>
+                        <Button 
+                            Text="Guardar"
+                            Command="{Binding GuardarTipoServicioCmd}"
+                            TextColor="White"
+                            Margin="0,20,0,0"
+                            BackgroundColor="#233979"/>
+                        <Button 
+                            Text="Eliminar" 
+                            Command="{Binding EliminarTipoServicioCmd}"
+                            TextColor="White"
+                            Margin="0,10,0,0"
+                            BackgroundColor="#119BD8"/>
                     </StackLayout>
                 </ContentView>
                 <ContentView IsVisible="{Binding MostrarListaTipoServicio}">

@@ -21,8 +21,18 @@
                         <Entry Placeholder="Ingrese el nombre" Text="{Binding TipoPago.Nombre}"/>
                         <Label Text="Esta Activo"/>
                         <CheckBox IsChecked="{Binding TipoPago.EstaActivo}"/>
-                        <Button Text="Guardar" Command="{Binding GuardarTipoPagoCmd}"/>
-                        <Button Text="Eliminar" Command="{Binding EliminarTipoPagoCmd}"/>
+                        <Button 
+                            Margin="0,20,0,0"
+                            BackgroundColor="#233979" 
+                            TextColor="White"
+                            Text="Guardar" 
+                            Command="{Binding GuardarTipoPagoCmd}"/>
+                        <Button 
+                            Margin="0,10,0,0"
+                            Text="Eliminar"
+                            TextColor="White"
+                            BackgroundColor="#119BD8"
+                            Command="{Binding EliminarTipoPagoCmd}"/>
                     </StackLayout>
                 </ContentView>
                 <ContentView IsVisible="{Binding MostrarListaTipoPago}">

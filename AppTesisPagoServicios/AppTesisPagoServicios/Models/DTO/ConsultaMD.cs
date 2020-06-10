@@ -8,9 +8,11 @@ namespace AppTesisPagoServicios.Models.DTO
     public class ConsultaMD
     {
         public int ConsultaId { get; set; }
-        public DateTime FechaConsulta { get; set; }
+        public string FechaConsulta { get; set; }
+        public DateTime Fecha { get; set; }
         public string Descripcion { get; set; }
         public string Referencia { get; set; }
+        public string Nombre { get; set; }
         public int UsuarioId { get; set; }
         public int ServicioId { get; set; }
         public List<RubrosMS> Rubros { get; set; }

@@ -9,5 +9,6 @@ namespace AppTesisPagoServicios.Models.MensajeriaSalida
         public int Prioridad { get; set; }
         public double ValorAPagar { get; set; }
         public string Periodo { get; set; }
+        public string Descripcion { get; set; }
     }
 }

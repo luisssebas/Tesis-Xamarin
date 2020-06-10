@@ -3,6 +3,7 @@ using AppTesisPagoServicios.Helpers;
 using AppTesisPagoServicios.Models.DTO;
 using AppTesisPagoServicios.Models.MensajeriaEntrada;
 using AppTesisPagoServicios.Models.MensajeriaSalida;
+using Plugin.Fingerprint;
 using Prism.Commands;
 using Prism.Navigation;
 using PropertyChanged;
@@ -34,6 +35,29 @@ namespace AppTesisPagoServicios.Views
 
             IngresarCmd = new DelegateCommand(IngresarEjecutar);
             RegistrarCmd = new DelegateCommand(RegistrarEjecutar);
+
+        }
+
+        private async void IngresarHuellaEjecutar()
+        {
+            if (DatosGlobales.Obtiene().UsuarioId != 0)
+            {
+                var result = await CrossFingerprint.Current.AuthenticateAsync("Ingrese su huella para ingresar a One Pay");
+                if (result.Authenticated)
+                {
+                    using (_userDialogs.Loading("Cargando"))
+                    {
+                        if (DatosGlobales.Obtiene().EsAdmin)
+                            await _navigationService.NavigateAsync("/MenuPage/NavigationPage/AdministradorPage");
+                        else
+                            await _navigationService.NavigateAsync("/MenuPage/NavigationPage/SeleccionTipoServiciosPage");
+                    }
+                }
+                else
+                {
+                    await _userDialogs.AlertAsync("No se puede leer la huella", "Huella Incorrecta", "Ok");
+                }
+            }
         }
 
         private async void RegistrarEjecutar()
@@ -82,6 +106,7 @@ namespace AppTesisPagoServicios.Views
 
         public void OnNavigatedTo(INavigationParameters parameters)
         {
+            IngresarHuellaEjecutar();
         }
     }
 }

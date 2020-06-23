@@ -70,7 +70,7 @@ namespace AppTesisPagoServicios.Views
                                 await _navigationService.NavigateAsync("/MenuPage/NavigationPage/PantallaInicialPage/LoginPage");
                             }
                             else
-                                await _userDialogs.AlertAsync("No se ha podido registrar el usuario");
+                                await _userDialogs.AlertAsync("El usuario ya existe, ingrese otro");
                         }
                         else
                         {

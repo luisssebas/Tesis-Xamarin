@@ -17,7 +17,7 @@ namespace AppTesisPagoServicios
         protected override async void OnInitialized()
         {
             InitializeComponent();
-            await NavigationService.NavigateAsync("MenuPage/NavigationPage/PantallaInicialPage");
+            await NavigationService.NavigateAsync("NavigationPage/PantallaInicialPage");
         }
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)

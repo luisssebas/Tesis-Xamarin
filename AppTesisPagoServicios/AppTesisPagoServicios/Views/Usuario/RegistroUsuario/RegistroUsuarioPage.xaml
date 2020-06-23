@@ -9,33 +9,44 @@
     x:Class="AppTesisPagoServicios.Views.RegistroUsuarioPage">
     <ContentPage.Content>
         <ScrollView>
-            <StackLayout Padding="20">
+            <StackLayout Padding="20" AutomationId="stlFormulario">
                 <Label Text="Información Personal" FontSize="25"/>
                 <Label 
                     Margin="0,10,0,0"
                     Text="Identificación"/>
                 <Entry 
+                    AutomationId="entIdentificacion"
                     MaxLength="10" 
                     Text="{Binding Usuario.Identificacion}"/>
                 <Label 
                     Text="Nombre"/>
-                <Entry Text="{Binding Usuario.Nombre}"/>
+                <Entry 
+                    AutomationId="entNombre"
+                    Text="{Binding Usuario.Nombre}"/>
                 <Label 
                     Text="Correo"/>
-                <Entry Text="{Binding Usuario.Correo}"/>
+                <Entry 
+                    AutomationId="entCorreo"
+                    Text="{Binding Usuario.Correo}"/>
                 <Label 
                     Margin="0,10,0,10"
                     Text="Datos de Usuario" 
                     FontSize="25"/>
                 <Label 
                     Text="Usuario"/>
-                <Entry Text="{Binding Usuario.Usuario}"/>
+                <Entry 
+                    AutomationId="entUsuario"
+                    Text="{Binding Usuario.Usuario}"/>
                 <Label 
                     Text="Contraseña"/>
-                <Entry IsPassword="True" Text="{Binding Usuario.Contrasenia}"/>
+                <Entry 
+                    AutomationId="entContrasenia"
+                    IsPassword="True" 
+                    Text="{Binding Usuario.Contrasenia}"/>
                 <Label 
                     Text="Repita su contraseña"/>
                 <Entry 
+                    AutomationId="entComprobacionContrasenia"
                     IsPassword="True" 
                     Text="{Binding Usuario.ComprobacionContrasenia}"/>
                 <Button 

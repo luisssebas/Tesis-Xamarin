@@ -65,7 +65,7 @@ namespace AppTesisPagoServicios.Views
             await _navigationService.NavigateAsync("RegistroUsuarioPage");
         }
 
-        private async void IngresarEjecutar()
+        public async void IngresarEjecutar()
         {
             try
             {

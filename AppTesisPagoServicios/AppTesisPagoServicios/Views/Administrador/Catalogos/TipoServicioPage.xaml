@@ -18,9 +18,14 @@
                 <ContentView IsVisible="{Binding MostrarEditarTipoServicio}">
                     <StackLayout>
                         <Label Text="Nombre"/>
-                        <Entry Placeholder="Ingrese el nombre" Text="{Binding TipoServicio.Nombre}"/>
+                        <Entry
+                            AutomationId="EntNombre"
+                            Placeholder="Ingrese el nombre" 
+                            Text="{Binding TipoServicio.Nombre}"/>
                         <Label Text="Esta Activo"/>
-                        <CheckBox IsChecked="{Binding TipoServicio.EstaActivo}"/>
+                        <CheckBox
+                            AutomationId="chkActivo"
+                            IsChecked="{Binding TipoServicio.EstaActivo}"/>
                         <Button 
                             Text="Guardar"
                             Command="{Binding GuardarTipoServicioCmd}"
@@ -80,6 +85,7 @@
                 </ContentView>
             </StackLayout>
             <Button 
+                AutomationId="btnAgregar"
                 Margin="30"
                 Grid.Row="0" 
                 VerticalOptions="EndAndExpand" 

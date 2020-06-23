@@ -78,6 +78,7 @@
                     </ListView>
                 </StackLayout>
                 <Button 
+                    AutomationId="btnAgregar"
                     Margin="30"
                     Grid.Row="0" 
                     VerticalOptions="EndAndExpand" 

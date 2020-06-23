@@ -10,7 +10,7 @@
     Title="Servicios"
     x:Class="AppTesisPagoServicios.Views.SeleccionTipoServiciosPage">
     <ContentPage.Content>
-        <Grid HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+        <Grid AutomationId="GrdBotones" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
             <Grid.RowDefinitions>
                 <RowDefinition Height="150"/>
                 <RowDefinition Height="150"/>
